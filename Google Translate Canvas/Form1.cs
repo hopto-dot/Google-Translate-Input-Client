@@ -94,6 +94,10 @@ namespace Google_Translate_Canvas
                         Button newButton = new Button();
                         newButton.Click += selectButton;
                         newButton.Text = suggestion.Replace("\"", "");
+                        newButton.Font = new Font("Microsoft Sans Serif", 19);
+
+                        newButton.Width = 49;
+                        newButton.Height = 49;
                         flpSuggestions.Controls.Add(newButton);
                     }   
 
@@ -130,7 +134,6 @@ namespace Google_Translate_Canvas
 
             return suggestions;
 
-            Console.WriteLine();
         }
 
         private string createCoordinateString()
