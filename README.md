@@ -1,5 +1,5 @@
 # Google-Translate-Input-Client
-An unofficial client for google input tools. Draw any character and it will come up with suggests, click a button to type the suggestion in the text box.
+An unofficial client for google input tools. Draw any character and it will come up with suggestions, click a button to type the suggestion in the text box.
 
 **Requires an internet connection**
 
