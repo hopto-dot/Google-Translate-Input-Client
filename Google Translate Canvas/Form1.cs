@@ -33,7 +33,11 @@ namespace Google_Translate_Canvas
 
         public void addXCoordinate(int X)
         {
-            lines[lines.Count - 1].xCoords.Add(X);
+            try
+            {
+                lines[lines.Count - 1].xCoords.Add(X);
+            }
+            catch { }
         }
         public void addYCoordinate(int Y)
         {

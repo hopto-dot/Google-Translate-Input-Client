@@ -47,12 +47,17 @@ namespace Google_Translate_Canvas
         }
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (draw == false)
+            if (draw == false || (Math.Abs(e.X - previousX) <= 3 && Math.Abs(e.Y - previousY) <= 3))
             {
                 return;
             }
             Program.form1.addXCoordinate(e.X);
             Program.form1.addYCoordinate(e.Y);
+
+            if (e.X > previousX) { previousX += -1; }
+            if (e.X < previousX) { previousX += 1; }
+            if (e.Y > previousY) { previousY += -1; }
+            if (e.Y < previousY) { previousY += 1; }
 
             canvasGraphics.DrawLine(canvasPen, previousX, previousY, e.X, e.Y);
             previousX = e.X;
