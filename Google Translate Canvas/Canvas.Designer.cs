@@ -33,16 +33,16 @@ namespace Google_Translate_Canvas
             // 
             // Canvas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Canvas";
-            this.Size = new System.Drawing.Size(333, 320);
+            this.Size = new System.Drawing.Size(500, 500);
             this.Load += new System.EventHandler(this.Canvas_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Canvas_MouseUp);
+            this.Resize += new System.EventHandler(this.Canvas_Resize);
             this.ResumeLayout(false);
 
         }

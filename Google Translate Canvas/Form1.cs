@@ -43,7 +43,7 @@ namespace Google_Translate_Canvas
         {
             lines[lines.Count - 1].yCoords.Add(Y);
         }
-        
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             lines.Clear();
@@ -84,15 +84,17 @@ namespace Google_Translate_Canvas
                         response = httpClient.SendAsync(request).Result;
                     }
                     catch { try { response = httpClient.SendAsync(request).Result; } catch { return; } }
-                    
 
                     var content = response.Content.ReadAsStringAsync();
-                    lblOutput.Text = content.Result;
+
+                    flpSuggestions.Invoke(new MethodInvoker(delegate { lblOutput.Text = content.Result; }));
 
                     string[] suggestions = getSuggestionsList(content.Result);
-                    if (suggestions == null) { tbxInput.Text += " "; return; }
+                    if (suggestions == null) { flpSuggestions.Invoke(new MethodInvoker(delegate { tbxInput.Text += " "; return; })); }
 
-                    flpSuggestions.Controls.Clear();
+                    flpSuggestions.Invoke(new MethodInvoker(delegate { flpSuggestions.Controls.Clear(); }));
+                    if (suggestions == null) { return; }
+
                     foreach (string suggestion in suggestions)
                     {
                         Button newButton = new Button();
@@ -102,83 +104,83 @@ namespace Google_Translate_Canvas
 
                         newButton.Width = 49;
                         newButton.Height = 49;
-                        flpSuggestions.Controls.Add(newButton);
-                    }   
 
-                    Console.WriteLine();
+                        flpSuggestions.Invoke(new MethodInvoker(delegate { flpSuggestions.Controls.Add(newButton); }));
+                    }
                 }
             }
-        }
 
-        private void selectButton(object sender, EventArgs e)
-        {
-            tbxInput.Text += sender.ToString().Substring(sender.ToString().Length - 1, 1);
-            Console.WriteLine();
-        }
-
-        private string[] getSuggestionsList (string response)
-        {
-            int snipString = -1;
-            snipString = response.IndexOf("[") + 1;
-            response = response.Substring(snipString);
-            snipString = response.IndexOf("[") + 1;
-            response = response.Substring(snipString);
-            snipString = response.IndexOf("[") + 1;
-            response = response.Substring(snipString);
-            snipString = response.IndexOf("[") + 1;
-            response = response.Substring(snipString);
-
-            snipString = response.IndexOf("]") - 1;
-            try
+            void selectButton(object sender, EventArgs e)
             {
-                response = response.Substring(1, snipString);
-            } catch { return null; }
-
-            string[] suggestions = response.Split(',');
-
-            return suggestions;
-
-        }
-
-        private string createCoordinateString()
-        {
-            string strokeString = string.Empty;
-            string newstrokeString = string.Empty;
-            int i = 1;
-
-            foreach (line stroke in lines)
-            {
-                string xString = "[";
-                string yString = "[";
-                string zString = "[";
-
-                foreach (int xcoord in stroke.xCoords)
-                {
-                    xString += xcoord + ", ";
-                    zString += i + ", ";
-                    i += 50;
-                }
-                xString += "]";
-                xString = xString.Replace(", ]", "]");
-                zString += "]";
-                zString =zString.Replace(", ]", "]");
-
-                foreach (int ycoord in stroke.yCoords)
-                {
-                    yString += ycoord + ", ";
-                }
-                yString += "]";
-                yString = yString.Replace(", ]", "]");
-
-                newstrokeString = $"{xString},{yString},{zString}";
-                //newstrokeString = $"[X],[Y],[Z]";
-                strokeString += "[" + newstrokeString + "],";
+                tbxInput.Text += sender.ToString().Substring(sender.ToString().Length - 1, 1);
             }
-            strokeString = "[" + strokeString + "]";
-            strokeString = strokeString.Replace(",]", "]");
 
+            string[] getSuggestionsList(string response)
+            {
+                int snipString = -1;
+                snipString = response.IndexOf("[") + 1;
+                response = response.Substring(snipString);
+                snipString = response.IndexOf("[") + 1;
+                response = response.Substring(snipString);
+                snipString = response.IndexOf("[") + 1;
+                response = response.Substring(snipString);
+                snipString = response.IndexOf("[") + 1;
+                response = response.Substring(snipString);
 
-            return strokeString;
+                snipString = response.IndexOf("]") - 1;
+                try
+                {
+                    response = response.Substring(1, snipString);
+                }
+                catch { return null; }
+
+                string[] suggestions = response.Split(',');
+
+                return suggestions;
+
+            }
+
+            string createCoordinateString()
+            {
+                string strokeString = string.Empty;
+                string newstrokeString = string.Empty;
+                int i = 1;
+
+                foreach (line stroke in lines)
+                {
+                    string xString = "[";
+                    string yString = "[";
+                    string zString = "[";
+
+                    foreach (int xcoord in stroke.xCoords)
+                    {
+                        xString += xcoord + ", ";
+                        zString += i + ", ";
+                        i += 50;
+                    }
+                    xString += "]";
+                    xString = xString.Replace(", ]", "]");
+                    zString += "]";
+                    zString = zString.Replace(", ]", "]");
+
+                    foreach (int ycoord in stroke.yCoords)
+                    {
+                        yString += ycoord + ", ";
+                    }
+                    yString += "]";
+                    yString = yString.Replace(", ]", "]");
+
+                    newstrokeString = $"{xString},{yString},{zString}";
+                    //newstrokeString = $"[X],[Y],[Z]";
+                    strokeString += "[" + newstrokeString + "],";
+                }
+                strokeString = "[" + strokeString + "]";
+                strokeString = strokeString.Replace(",]", "]");
+                
+
+                return strokeString;
+            }
+
         }
     }
 }

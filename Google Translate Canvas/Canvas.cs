@@ -31,35 +31,40 @@ namespace Google_Translate_Canvas
         }
         private void Canvas_MouseDown(object sender, MouseEventArgs e)
         {
+            //When the user starts drawing a new line, create a new
+            //instance of a line object to add coordinates to
             Program.form1.addLine();
-            previousX = -1;
-            previousY = -1;
 
             draw = true;
             previousX = e.X;
             previousY = e.Y;
         }
-        private void Canvas_MouseUp(object sender, MouseEventArgs e)
+        private async void Canvas_MouseUp(object sender, MouseEventArgs e)
         {
             draw = false;
 
-            Program.form1.googleRequest();
+            //Once the user has finished drawing a line, send a post request to inputtools
+            await Task.Run(() => Program.form1.googleRequest());
         }
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (draw == false || (Math.Abs(e.X - previousX) <= 3 && Math.Abs(e.Y - previousY) <= 3))
+            if (draw == false || (Math.Abs(e.X - previousX) <= 5 && Math.Abs(e.Y - previousY) <= 5))
             {
                 return;
             }
+
+            if (e.X > previousX) { previousX += -1; }
+            else if (e.X < previousX) { previousX += 1; }
+            if (e.Y > previousY) { previousY += -1; }
+            else if (e.Y < previousY) { previousY += 1; }
+
+            //add coordinates to the latest instance of line object
             Program.form1.addXCoordinate(e.X);
             Program.form1.addYCoordinate(e.Y);
 
-            if (e.X > previousX) { previousX += -1; }
-            if (e.X < previousX) { previousX += 1; }
-            if (e.Y > previousY) { previousY += -1; }
-            if (e.Y < previousY) { previousY += 1; }
-
+            //draw a line from the last mouse position to the new mouse position
             canvasGraphics.DrawLine(canvasPen, previousX, previousY, e.X, e.Y);
+
             previousX = e.X;
             previousY = e.Y;
         }
@@ -71,6 +76,10 @@ namespace Google_Translate_Canvas
         public void clearCanvas()
         {
             canvasGraphics.Clear(Color.FromArgb(222, 222, 222));
+        }
+        private void Canvas_Resize(object sender, EventArgs e)
+        {
+            canvasGraphics = CreateGraphics();
         }
     }
 }

@@ -40,10 +40,9 @@ namespace Google_Translate_Canvas
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(8, 8);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClear.Location = new System.Drawing.Point(24, 23);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(105, 44);
+            this.btnClear.Size = new System.Drawing.Size(158, 69);
             this.btnClear.TabIndex = 1;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -51,54 +50,57 @@ namespace Google_Translate_Canvas
             // 
             // lblOutput
             // 
-            this.lblOutput.BackColor = System.Drawing.Color.White;
+            this.lblOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOutput.BackColor = System.Drawing.Color.Transparent;
             this.lblOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOutput.Location = new System.Drawing.Point(3, 467);
-            this.lblOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblOutput.Location = new System.Drawing.Point(12, 888);
             this.lblOutput.Name = "lblOutput";
-            this.lblOutput.Size = new System.Drawing.Size(556, 109);
+            this.lblOutput.Size = new System.Drawing.Size(1043, 170);
             this.lblOutput.TabIndex = 3;
             // 
             // flpSuggestions
             // 
-            this.flpSuggestions.Location = new System.Drawing.Point(8, 366);
-            this.flpSuggestions.Margin = new System.Windows.Forms.Padding(2);
+            this.flpSuggestions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flpSuggestions.Location = new System.Drawing.Point(12, 658);
             this.flpSuggestions.Name = "flpSuggestions";
-            this.flpSuggestions.Size = new System.Drawing.Size(553, 99);
+            this.flpSuggestions.Size = new System.Drawing.Size(1043, 227);
             this.flpSuggestions.TabIndex = 4;
             // 
             // tbxInput
             // 
+            this.tbxInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxInput.Location = new System.Drawing.Point(8, 332);
-            this.tbxInput.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxInput.Location = new System.Drawing.Point(12, 605);
             this.tbxInput.Name = "tbxInput";
-            this.tbxInput.Size = new System.Drawing.Size(553, 30);
+            this.tbxInput.Size = new System.Drawing.Size(1043, 44);
             this.tbxInput.TabIndex = 5;
             // 
             // canvas1
             // 
+            this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.canvas1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.canvas1.Location = new System.Drawing.Point(117, 8);
-            this.canvas1.Margin = new System.Windows.Forms.Padding(2);
+            this.canvas1.Location = new System.Drawing.Point(12, 13);
             this.canvas1.Name = "canvas1";
-            this.canvas1.Size = new System.Drawing.Size(333, 320);
-            this.canvas1.TabIndex = 6;
+            this.canvas1.Size = new System.Drawing.Size(1043, 586);
+            this.canvas1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 524);
+            this.ClientSize = new System.Drawing.Size(1067, 1067);
+            this.Controls.Add(this.lblOutput);
+            this.Controls.Add(this.flpSuggestions);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.canvas1);
             this.Controls.Add(this.tbxInput);
-            this.Controls.Add(this.flpSuggestions);
-            this.Controls.Add(this.lblOutput);
-            this.Controls.Add(this.btnClear);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(585, 603);
-            this.MinimumSize = new System.Drawing.Size(585, 481);
+            this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "Form1";
             this.Text = "Google Input";
             this.ResumeLayout(false);
