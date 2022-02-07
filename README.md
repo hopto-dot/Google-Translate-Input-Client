@@ -13,3 +13,5 @@ An unofficial client for google input tools. Draw any character and it will come
 * https://stackoverflow.com/questions/43421126/how-to-use-httpclient-to-send-content-in-body-of-get-request
 
 * https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-add-an-event-handler?view=netdesktop-6.0
+
+* https://ourcodeworld.com/articles/read/506/winforms-cross-thread-operation-not-valid-control-controlname-accessed-from-a-thread-other-than-the-thread-it-was-created-on
