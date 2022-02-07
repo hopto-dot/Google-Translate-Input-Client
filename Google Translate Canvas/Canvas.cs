@@ -72,6 +72,5 @@ namespace Google_Translate_Canvas
         {
             canvasGraphics.Clear(Color.FromArgb(222, 222, 222));
         }
-
     }
 }

@@ -53,7 +53,7 @@ namespace Google_Translate_Canvas
             // 
             this.lblOutput.BackColor = System.Drawing.Color.White;
             this.lblOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOutput.Location = new System.Drawing.Point(5, 440);
+            this.lblOutput.Location = new System.Drawing.Point(3, 467);
             this.lblOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOutput.Name = "lblOutput";
             this.lblOutput.Size = new System.Drawing.Size(556, 109);
@@ -64,7 +64,7 @@ namespace Google_Translate_Canvas
             this.flpSuggestions.Location = new System.Drawing.Point(8, 366);
             this.flpSuggestions.Margin = new System.Windows.Forms.Padding(2);
             this.flpSuggestions.Name = "flpSuggestions";
-            this.flpSuggestions.Size = new System.Drawing.Size(553, 62);
+            this.flpSuggestions.Size = new System.Drawing.Size(553, 99);
             this.flpSuggestions.TabIndex = 4;
             // 
             // tbxInput
@@ -89,7 +89,7 @@ namespace Google_Translate_Canvas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 434);
+            this.ClientSize = new System.Drawing.Size(567, 524);
             this.Controls.Add(this.canvas1);
             this.Controls.Add(this.tbxInput);
             this.Controls.Add(this.flpSuggestions);
