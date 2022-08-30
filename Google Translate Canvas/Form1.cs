@@ -23,7 +23,7 @@ namespace Google_Translate_Canvas
             public List<int> xCoords = new List<int>();
             public List<int> yCoords = new List<int>();
         }
-        public List<line> lines = new List<line>();
+        public static List<line> lines = new List<line>();
 
         public void addLine()
         {
@@ -46,7 +46,6 @@ namespace Google_Translate_Canvas
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            lines.Clear();
             canvas1.clearCanvas();
         }
 
@@ -86,8 +85,6 @@ namespace Google_Translate_Canvas
                     catch { try { response = httpClient.SendAsync(request).Result; } catch { return; } }
 
                     var content = response.Content.ReadAsStringAsync();
-
-                    flpSuggestions.Invoke(new MethodInvoker(delegate { lblOutput.Text = content.Result; }));
 
                     string[] suggestions = getSuggestionsList(content.Result);
                     if (suggestions == null) { flpSuggestions.Invoke(new MethodInvoker(delegate { tbxInput.Text += " "; return; })); }
@@ -181,6 +178,11 @@ namespace Google_Translate_Canvas
                 return strokeString;
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            canvas1.undoLastLine();
         }
     }
 }

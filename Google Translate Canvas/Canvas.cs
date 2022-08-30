@@ -77,6 +77,43 @@ namespace Google_Translate_Canvas
         {
             canvasGraphics.Clear(Color.FromArgb(222, 222, 222));
         }
+
+        public void undoLastLine()
+        {
+            try
+            {
+                Form1.lines.RemoveAt(Form1.lines.Count - 1);
+            }
+            catch { return; }
+
+            canvasGraphics.Clear(Color.FromArgb(222, 222, 222));
+
+            foreach (Form1.line stroke in Form1.lines)
+            {
+                drawLine(stroke.xCoords, stroke.yCoords);
+            }
+            if (Form1.lines.Count != 0)
+            {
+                Program.form1.googleRequest();
+            }
+        }
+
+        public void drawLine(List<int> Xs, List<int> Ys)
+        {
+            int currentX, currentY;
+            for (int i = 0; i < Xs.Count - 1; i += 1)
+            {
+                previousX = Xs[i]; previousY = Ys[i];
+                currentX = Xs[i + 1]; currentY = Ys[i + 1];
+
+                if (currentX > previousX) { previousX += -1; }
+                else if (currentX < previousX) { previousX += 1; }
+                if (currentY > previousY) { previousY += -1; }
+                else if (currentY < previousY) { previousY += 1; }
+
+                canvasGraphics.DrawLine(canvasPen, previousX, previousY, currentX, currentY);
+            }
+        }
         private void Canvas_Resize(object sender, EventArgs e)
         {
             canvasGraphics = CreateGraphics();
