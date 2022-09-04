@@ -3,7 +3,8 @@ An unofficial client for google input tools. Draw any character and it will come
 
 **Requires an internet connection**
 
-![image](https://user-images.githubusercontent.com/66906618/152581958-b4b4cb4f-9bb4-46b6-bf07-b21a3edfcc3c.png)
+![version 1.1](https://user-images.githubusercontent.com/66906618/188327505-c4967a37-dd4b-4a38-ad9d-71d01563d121.png)
+
 
 # References
 * https://www.c-sharpcorner.com/forums/drawing-line-using-mouse-movement-event
